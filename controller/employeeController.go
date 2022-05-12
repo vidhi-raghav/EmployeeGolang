@@ -16,8 +16,8 @@ type controller struct {
 	service service.EmployeeService
 }
 
-func New(service service.EmployeeService) controller {
-	return controller{
+func New(service service.EmployeeService) EmployeeController {
+	return &controller{
 		service: service,
 	}
 }
@@ -28,7 +28,7 @@ func (c *controller) FindAll() []employee.Employee {
 
 func (c *controller) Save(ctx *gin.Context) employee.Employee {
 	var employee employee.Employee
-	ctx.Bind(&employee)
+	ctx.BindJSON(&employee)
 	c.service.Save(employee)
 	return employee
 }

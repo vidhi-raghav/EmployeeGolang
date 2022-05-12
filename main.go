@@ -15,23 +15,19 @@ var (
 )
 
 func main() {
+
 	emp := employee.Employee{123, "VIDHI", "9876543210"}
 	fmt.Print(emp)
 
 	router := gin.Default()
-	// router.GET("/ping", func(c *gin.Context) {
-	// 	c.JSON(200, gin.H{
-	// 		"message": "pong",
-	// 	})
-	// })
 
-	router.GET("/empoyee", func(ctx *gin.Context) {
+	router.GET("/employee", func(ctx *gin.Context) {
 		ctx.JSON(200, employeeController.FindAll())
 	})
 
-	router.POST("/empoyee", func(ctx *gin.Context) {
+	router.POST("/employee", func(ctx *gin.Context) {
 		ctx.JSON(200, employeeController.Save(ctx))
 	})
 
-	router.Run()
+	router.Run(":8080")
 }

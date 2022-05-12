@@ -1,7 +1,7 @@
 package employee
 
 type Employee struct {
-	Id      int
-	Name    string
-	PhoneNo string
+	Id      int    `json:"id"`
+	Name    string `json:"name"`
+	PhoneNo string `json:"phoneNo"`
 }
